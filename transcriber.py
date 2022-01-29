@@ -1,6 +1,6 @@
 import requests
 from time import sleep
-
+import json
 class transcriber:
 
     auth_key = '74806487cd224a64819840e848bccf88'
@@ -48,11 +48,40 @@ class transcriber:
             f.write(self.polling_response.json()['text'])
         print('Transcript saved to', self.filename)
 
-
     def getparagraphs(self):
-        endpoint = "https://api.assemblyai.com/v2/transcript/" + self.transcript_response.json()['id'] + "sentences"
+        endpoint = "https://api.assemblyai.com/v2/transcript/" + self.transcript_response.json()['id'] + "/paragraphs"
         headers = {
-            "authorization": "YOUR-API-TOKEN",
+            "authorization": "74806487cd224a64819840e848bccf88",
         }
         response = requests.get(endpoint, headers=headers)
-        print(response.json())
+        with open("ptest.json", 'w') as f:
+            f.write(json.dumps(response.json(), indent=2))
+        print('Transcript saved')
+        with open('ptest.json') as json_file:
+            data = json.load(json_file)
+        list_of_lists = []
+        for x in range(len(data['paragraphs'])):
+            list_of_lists.append(data['paragraphs'][x]['text'] + '\n')
+        return list_of_lists
+
+    def gettstamps(self):
+        endpoint = "https://api.assemblyai.com/v2/transcript/" + self.transcript_response.json()['id']  + "/paragraphs"
+        headers = {
+            "authorization": "74806487cd224a64819840e848bccf88",
+        }
+        response = requests.get(endpoint, headers=headers)
+        # print(json.dumps(response.json(), indent =2))
+        # print(response.json())
+        with open("ptest.json", 'w') as f:
+            f.write(json.dumps(response.json(), indent=2))
+        #print('Transcript saved')
+        with open('ptest.json') as json_file:
+            data = json.load(json_file)
+        list_of_start = []
+        list_of_end = []
+        for x in range(len(data['paragraphs'])):
+            list_of_start.append(data['paragraphs'][x]['start'])
+            list_of_end.append(data['paragraphs'][x]['end'])
+            #print('Start: ', list_of_start[-1])
+            #print('End: ', list_of_end[-1])
+        return list_of_start,list_of_end
