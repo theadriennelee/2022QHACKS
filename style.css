@@ -1,0 +1,26 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("../2022QHACKS/images/background.jpg");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.texts {
+    padding-left: 2%;
+}
+
+input {
+    padding-left: 2%;
+}
