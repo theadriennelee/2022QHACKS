@@ -5,6 +5,9 @@ from flask import Flask, render_template, request, send_from_directory
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 import os
+from transcriber import transcriber
+from pdfmake import pdf
+import shutil
 app = Flask(__name__)
 
 @app.route('/')
@@ -28,6 +31,16 @@ def upload_file():
         if request.method == 'POST':
             f = request.files['myFile']
             f.save(secure_filename(f.filename))
+            shutil.copyfile("C:\\Users\\Admin\\Documents\\GitHub\\2022QHACKS\\" + f.filename,
+                            "C:\\Users\\Admin\\Documents\\GitHub\\2022QHACKS\\clone1.mp4" )
+            test = transcriber(f.filename)
+            test.wait()
+            foo = test.getparagraphs()
+            start, end = test.gettstamps()
+            print("C:\\Users\\Admin\\Documents\\GitHub\\2022QHACKS\\" + f.filename)
+            #app.logger(bar)
+            pdf1 = pdf(f.filename + "notes", foo,start,end, "C:\\Users\\Admin\\Documents\\GitHub\\2022QHACKS\\clone1.mp4")
+            pdf1.gen2()
             #   return 'file uploaded successfully'
             return render_template("transcription.html")
     except:
@@ -38,10 +51,11 @@ def upload_file():
 def download(filename):
     # Appending app path to upload folder path within app root folder
     # uploads = os.path.join(current_app.root_path, app.config['UPLOAD_FOLDER'])
-    uploads = r"C:\Users\Adrienne Lee\Documents\Queens\Year 4\2022QHACKS"
+    foobar = os.getcwd()
+    #uploads = r"C:\Users\Adrienne Lee\Documents\Queens\Year 4\2022QHACKS"
     # Returning file from appended path
     # return send_from_directory(directory=uploads, filename=filename)
-    return send_from_directory(uploads, filename)
+    return send_from_directory(foobar, filename)
 		
 if __name__ == '__main__':
    app.run(debug = True)
