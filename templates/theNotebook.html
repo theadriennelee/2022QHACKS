@@ -7,7 +7,7 @@
   <title></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./style.css">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
 
 
 
@@ -19,8 +19,9 @@
     <h1 class="texts" style="font-size: 3vw;">Watch. Listen. Read.</h1>
     <br>
     <br>
-    <form action="/action_page.php">
-        <input type="file" id="myFile" name="filename">
+    <h1 class="texts" style="font-size: 1vw;" id="message">{{message}}</h1>
+    <form action="/uploader" method="POST" enctype = "multipart/form-data">
+        <input type="file" id="myFile" name="myFile">
         <input type="submit">
       </form>
 </body>

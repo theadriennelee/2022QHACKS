@@ -7,7 +7,7 @@
   <title></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./style.css">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
 
 
 
@@ -19,13 +19,9 @@
     <h1 class="texts" style="font-size: 3vw;">Watch. Listen. Read.</h1>
     <br>
     <br>
-    <div class="container texts" style="margin: 0%; padding-left: 2%;">
-        <h1 style="font-size: 1.5vw;">Username</h1>
-        <input type="text" style="padding-left:1%;" placeholder="Enter Username" name="uname" required>
-        <h1 style="font-size: 1.5vw; padding-top: 1.5%;">Password</h1>
-        <input type="password" style="padding-left:1%;" placeholder="Enter Password" name="pword" required>
-        <button type="submit"><a href="../2022QHACKS/theNotebook.html">Login</a></button>
-    </div>
+    <h1 class="texts" style="font-size: 1.5vw;">Your transcription is ready.</h1>
+    <a class="texts" style="font-size: 1vw;" href="{{ url_for('download', filename="ELEC472_Lab1.pdf") }}">Transcription</a>
+    <h1 class="texts" style="font-size: 1vw; position:absolute; bottom: 2%;"><a href="/theNotebook">Go Back</a></h1>
 </body>
 
 <!-- Latest compiled and minified CSS -->
