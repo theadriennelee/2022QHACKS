@@ -7,7 +7,7 @@
   <title></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
 
 
 
@@ -16,17 +16,18 @@
 </head>
 
 <body class="bg">
-    <h1 class="texts" style="padding-top: 12%; font-size: 5vw;">The Notebook</h1>
-    <h1 class="texts" style="font-size: 3vw;">Watch. Listen. Read.</h1>
-    <br>
-    <br>
-    <div class="container texts" style="margin: 0%; padding-left: 2%;">
-        <h1 style="font-size: 1.5vw;">Username</h1>
-        <input type="text" style="padding-left:1%;" placeholder="Enter Username" name="uname" required>
-        <h1 style="font-size: 1.5vw; padding-top: 1.5%;">Password</h1>
-        <input type="password" style="padding-left:1%;" placeholder="Enter Password" name="pword" required>
-        <button type="submit"><a href="/theNotebook">Login</a></button>
-    </div>
+  <h1 class="texts" style="padding-top: 12%; font-size: 5vw;">The Notebook</h1>
+  <h1 class="texts" style="font-size: 3.5vw;">Lecture Notes Made Simple.</h1>
+  <h1 class="texts" style="font-size: 1.5vw; width:33%">Upload your lecture videos to receive a well-formatted PDF set of
+    notes including slides screenshots and a transcription of your professors' explanations.</h1>
+  <br>
+  <div class="container texts" style="margin: 0%; padding-left: 2%;">
+    <h1 style="font-size: 1.5vw;">Username</h1>
+    <input type="text" style="padding-left:1%;" placeholder="Enter Username" name="uname" required>
+    <h1 style="font-size: 1.5vw; padding-top: 1.5%;">Password</h1>
+    <input type="password" style="padding-left:1%;" placeholder="Enter Password" name="pword" required>
+    <button type="submit"><a href="/theNotebook">Login</a></button>
+  </div>
 </body>
 
 <!-- Latest compiled and minified CSS -->
@@ -40,4 +41,5 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </html>

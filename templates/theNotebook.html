@@ -16,14 +16,57 @@
 
 <body class="bg">
     <h1 class="texts" style="padding-top: 12%; font-size: 5vw;">The Notebook</h1>
-    <h1 class="texts" style="font-size: 3vw;">Watch. Listen. Read.</h1>
+    <h1 class="texts" style="font-size: 3.5vw;">Lecture Notes Made Simple.</h1>
     <br>
     <br>
+    <!-- <h1 class="texts" style="font-size: 2vw;">Upload File</h1>
+    <h1 class="texts" style="font-size: 1.25vw; width:33%">Supported file types include .mp4, .m4a, .wav and .wv.</h1>
     <h1 class="texts" style="font-size: 1vw;" id="message">{{message}}</h1>
     <form action="/uploader" method="POST" enctype = "multipart/form-data">
         <input type="file" id="myFile" name="myFile">
-        <input type="submit">
-      </form>
+        <input type="submit" class="button" onclick="showLoader()">
+      </form> -->
+      <div class="texts">
+        <h1 style="font-size: 1.5vw;" id="message">{{message}}</h1>
+        <button type="button" class="btn-lg btn-secondary" data-toggle="modal" data-target="#exampleModalCenter">
+          Upload file
+        </button>
+      </div>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 1.25vw;">Upload File</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h1 class="texts" style="font-size: 1vw;">Supported file types include .mp4, .m4a, .wav and .wv.</h1>
+                <br>
+                <form action="/uploader" method="POST" enctype = "multipart/form-data">
+                  <div>
+                    <p style="float:left">
+                    <input type="file" id="myFile" name="myFile">
+                    </p>
+                    <p style="float:right">
+                    <input type="submit" class="button" onclick="showLoader()">
+                    </p>
+                  </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="loadingCaption" id="loadingCaption">Your transcription is being created.</h1>
+      <br>
+      <div class="loader" id="loading"></div>
 </body>
 
 <!-- Latest compiled and minified CSS -->
@@ -37,4 +80,28 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style>  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  </style>
+
+<script>
+  document.getElementById("loading").style.display = "none";
+  document.getElementById("loadingCaption").style.display = "none";
+
+  function showLoader() {
+    document.getElementById("loading").style.display = "block";
+    document.getElementById("loadingCaption").style.display = "block";
+  }
+</script>
+
 </html>
