@@ -28,7 +28,7 @@ class pdf:
             self.addParagraph(self.listofp[n])
             cwd = vc.getframe(self.video,self.start[n])
             self.addImage(cwd)
-        SimpleDocTemplate(self.title+'.pdf', pagesize=letter, rightMargin=12, leftMargin=12, topMargin=12,
+        SimpleDocTemplate('Notes.pdf', pagesize=letter, rightMargin=12, leftMargin=12, topMargin=12,
                           bottomMargin=6).build(self.doc)
 
 
