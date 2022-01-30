@@ -22,7 +22,6 @@ def theNotebook():
 # @app.route('/upload')
 # def upload_file():
 #    return render_template('transcription.html')
-	
 @app.route('/uploader', methods = ['GET', 'POST'])
 def upload_file():
     # return render_template('transcription.html')
