@@ -39,7 +39,7 @@ def upload_file():
             start, end = test.gettstamps()
             print("C:\\Users\\Admin\\Documents\\GitHub\\2022QHACKS\\" + f.filename)
             #app.logger(bar)
-            pdf1 = pdf("Notes", foo,start,end, "C:\\Users\\Admin\\Documents\\GitHub\\2022QHACKS\\clone1.mp4")
+            pdf1 = pdf(f.filename, foo,start,end, "C:\\Users\\Admin\\Documents\\GitHub\\2022QHACKS\\clone1.mp4")
             pdf1.gen2()
             #   return 'file uploaded successfully'
             return render_template("transcription.html")
